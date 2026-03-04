@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>химчистка салона автомобиля в минске</title>
+  <!-- Font Awesome 5 (иконки) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <!-- Google Fonts (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f6f8fa;
+      color: #1e2b3c;
+      line-height: 1.5;
+    }
+    .app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 24px 40px;
+    }
+    /* header / навигация */
+    .header {
+      margin-bottom: 32px;
+    }
+    .header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #0a1a2b;
+      margin-bottom: 20px;
+    }
+    .header h1 i {
+      color: #2b7a4b;
+      font-size: 2rem;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 2px solid #dde2e8;
+      padding-bottom: 8px;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 40px 40px 0 0;
+      color: #4a5f73;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tab-btn i {
+      font-size: 1.1rem;
+    }
+    .tab-btn:hover {
+      background: #e9eef3;
+      color: #1e3a5f;
+    }
+    .tab-btn.active {
+      background: #ffffff;
+      color: #0f5b3a;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.02), 0 4px 0 #0f5b3a;
+    }
+    /* контейнер контента */
+    .content-card {
+      background: white;
+      border-radius: 32px;
+      padding: 36px 32px;
+      box-shadow: 0 15px 40px -12px rgba(0,32,64,0.12);
+      margin-top: 24px;
+      min-height: 460px;
+    }
+    /* главная */
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-text {
+      flex: 1 1 300px;
+    }
+    .hero-text h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #0b2b3b;
+      margin-bottom: 20px;
+    }
+    .hero-text h2 span {
+      color: #0f5b3a;
+      border-bottom: 4px solid #b8e0cc;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #2f4052;
+      margin: 20px 0 24px;
+      max-width: 500px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin: 28px 0 16px;
+    }
+    .feature-item {
+      background: #f0f5fa;
+      border-radius: 60px;
+      padding: 12px 20px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #1d3b4f;
+    }
+    .feature-item i {
+      color: #0f5b3a;
+      font-size: 1.2rem;
+      width: 24px;
+    }
+    .hero-image {
+      flex: 1 1 300px;
+      background: linear-gradient(145deg, #d3e4d7, #f0f9f0);
+      border-radius: 40px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: inset 0 2px 8px rgba(255,255,255,0.8), 0 12px 24px -16px #1f3a3a;
+    }
+    .hero-image i {
+      font-size: 8rem;
+      color: #1f5e42;
+      opacity: 0.7;
+    }
+    .hero-image p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1a4d38;
+      margin-top: 10px;
+    }
+    .price-tag {
+      background: #0f2b1e;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-top: 16px;
+      font-weight: 600;
+    }
+    /* галерея */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .gallery-item {
+      background: #f1f7fc;
+      border-radius: 24px;
+      padding: 30px 12px 20px;
+      text-align: center;
+      transition: 0.15s;
+      border: 1px solid #dee9f2;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+    .gallery-item i {
+      font-size: 5rem;
+      color: #2e6b4c;
+      margin-bottom: 12px;
+    }
+    .gallery-item p {
+      font-weight: 600;
+      color: #1d3d4a;
+    }
+    .badge {
+      background: #0f5b3a;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    /* контакты */
+    .contacts-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .info-col {
+      flex: 1 1 240px;
+    }
+    .info-col h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 12px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: #f2f7fd;
+      border-radius: 80px;
+      padding: 16px 28px;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .contact-detail i {
+      font-size: 1.6rem;
+      color: #0f5b3a;
+      width: 36px;
+    }
+    .map-placeholder {
+      flex: 2 1 300px;
+      background: #cad9e6;
+      border-radius: 32px;
+      padding: 40px 20px;
+      text-align: center;
+      color: #1f4155;
+      font-weight: 600;
+      border: 2px dashed #5982a1;
+    }
+    .map-placeholder i {
+      font-size: 3.5rem;
+      color: #1c4e3a;
+      margin-bottom: 12px;
+    }
+    .work-time {
+      margin-top: 24px;
+      background: #e1f0e8;
+      border-radius: 40px;
+      padding: 20px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+    }
+    /* отзывы */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin: 20px 0 16px;
+    }
+    .review-card {
+      background: #fafcff;
+      border-radius: 28px;
+      padding: 24px 20px;
+      border: 1px solid #dde7f0;
+      box-shadow: 0 5px 15px rgba(0,20,10,0.04);
+    }
+    .review-header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .avatar {
+      width: 52px;
+      height: 52px;
+      background: #155d3b;
+      border-radius: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    .review-name {
+      font-weight: 700;
+    }
+    .stars {
+      color: #f5b342;
+      margin: 6px 0 10px;
+      letter-spacing: 2px;
+    }
+    .review-text {
+      color: #2d4a5e;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+    .review-date {
+      font-size: 0.8rem;
+      color: #6a7f93;
+    }
+    .rating-summary {
+      background: #e2f0e8;
+      border-radius: 60px;
+      padding: 18px 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .rating-summary i {
+      color: #0f5b3a;
+      font-size: 2rem;
+    }
+    /* футер */
+    .footer-note {
+      margin-top: 40px;
+      text-align: center;
+      color: #556f84;
+      font-size: 0.9rem;
+      border-top: 1px solid #d7e0e9;
+      padding-top: 20px;
+    }
+    /* скрытие вкладок */
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active-pane {
+      display: block;
+    }
+    /* МОДАЛЬНОЕ ОКНО С ГАЛЕРЕРЕЙ */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: white;
+      padding: 30px 30px 25px;
+      border-radius: 32px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      max-height: 90vh;
+      overflow-y: auto;
+      margin: auto;
+    }
+    
+    /* Контейнер для основного фото */
+    .main-image-container {
+      position: relative;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #modal-main-image {
+      max-width: 100%;
+      max-height: 300px;
+      width: auto;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 10px 25px -8px rgba(0,0,0,0.3);
+      object-fit: cover;
+    }
+    
+    /* Кнопки навигации */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #0f5b3a;
+      transition: 0.2s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-btn:hover {
+      background: #0f5b3a;
+      color: white;
+    }
+    
+    .nav-btn.prev {
+      left: 10px;
+    }
+    
+    .nav-btn.next {
+      right: 10px;
+    }
+    
+    /* Миниатюры */
+    .thumbnails {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+    
+    .thumbnail {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      cursor: pointer;
+      object-fit: cover;
+      border: 3px solid transparent;
+      transition: 0.2s;
+    }
+    
+    .thumbnail:hover {
+      transform: translateY(-2px);
+    }
+    
+    .thumbnail.active {
+      border-color: #0f5b3a;
+      transform: scale(1.05);
+    }
+    
+    .modal-content h3 {
+      font-size: 1.8rem;
+      color: #0f5b3a;
+      margin: 5px 0 10px;
+    }
+    
+    .modal-content p {
+      color: #2f4052;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    
+    .close-modal {
+      position: sticky;
+      top: 0;
+      float: right;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #666;
+      cursor: pointer;
+      transition: 0.2s;
+      line-height: 1;
+      background: white;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      z-index: 10;
+    }
+    
+    .close-modal:hover {
+      color: #0f5b3a;
+      transform: scale(1.1);
+    }
+    
+    /* адаптация */
+    @media (max-width: 550px) {
+      .app { padding: 16px; }
+      .content-card { padding: 24px 18px; }
+      .tab-btn { padding: 10px 16px; }
+      .modal-content { padding: 20px 15px; }
+      .thumbnail { width: 50px; height: 50px; }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <h1>
+      <i class="fas fa-spray-can-sparkles"></i> 
+      Химчистка авто в Минске
+    </h1>
+    <div class="tabs" id="tabsContainer">
+      <button class="tab-btn active" data-tab="main"><i class="fas fa-home"></i> Главная</button>
+      <button class="tab-btn" data-tab="gallery"><i class="fas fa-images"></i> Галерея</button>
+      <button class="tab-btn" data-tab="contacts"><i class="fas fa-map-pin"></i> Контакты</button>
+      <button class="tab-btn" data-tab="reviews"><i class="fas fa-star"></i> Отзывы</button>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <!-- Вкладка Главная -->
+    <div id="main" class="tab-pane active-pane">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h2>Чистота <span>до мелочей</span> в Минске</h2>
+          <p class="hero-desc">
+            Профессиональная химчистка салона любой сложности. Удаляем запахи, пятна, освежаем кожу и ткань. Работаем с 2012 года.
+          </p>
+          <div class="features">
+            <div class="feature-item"><i class="fas fa-clock"></i> За 3–6 часов</div>
+            <div class="feature-item"><i class="fas fa-leaf"></i> Гипоаллергенно</div>
+            <div class="feature-item"><i class="fas fa-tint"></i> Озонирование</div>
+            <div class="feature-item"><i class="fas fa-shield-alt"></i> Защита UV</div>
+          </div>
+          <div class="price-tag">
+            <i class="fas fa-tag"></i> Комплекс «Комфорт» от 199 BYN
+          </div>
+        </div>
+        <div class="hero-image">
+          <i class="fas fa-wind"></i>
+          <p>Глубокая очистка</p>
+          <span style="background: #eef6f1; padding: 6px 18px; border-radius: 40px; display: inline-block; margin-top: 12px;">⭐ более 800 довольных клиентов</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Вкладка Галерея -->
+    <div id="gallery" class="tab-pane">
+      <h2 style="margin-bottom: 20px; display: flex; gap: 10px;"><i class="fas fa-camera-retro" style="color: #0f5b3a;"></i> Примеры работ (нажмите на фото)</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openModal('bmw')">
+          <i class="fas fa-car-side"></i><p>Салон BMW</p><span class="badge">до/после</span>
+        </div>
+        <div class="gallery-item" onclick="openModal('leather')">
+          <i class="fas fa-chair"></i><p>Кожаные сиденья</p><span class="badge">чистка</span>
+        </div>
+        <div class="gallery-item" onclick="openModal('fabric')">
+          <i class="fas fa-vest"></i><p>Тканевый потолок</p><span class="badge">без разводов</span>
+        </div>
+        <div class="gallery-item" onclick="openModal('trunk')">
+          <i class="fas fa-caravan"></i><p>Ковры и багажник</p><span class="badge">восстановление</span>
+        </div>
+        <div class="gallery-item" onclick="openModal('ozone')">
+          <i class="fas fa-wind"></i><p>Озонирование</p><span class="badge">запах табака</span>
+        </div>
+        <div class="gallery-item" onclick="openModal('headlights')">
+          <i class="fas fa-brush"></i><p>Полировка фар</p><span class="badge">оптика</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Вкладка Контакты -->
+    <div id="contacts" class="tab-pane">
+      <h2 style="margin-bottom: 20px;"><i class="fas fa-address-card" style="color: #0f5b3a;"></i> Как нас найти</h2>
+      <div class="contacts-row">
+        <div class="info-col">
+          <div class="contact-detail"><i class="fas fa-phone-alt"></i> +375 (29) 777-88-99</div>
+          <div class="contact-detail"><i class="fas fa-mobile-alt"></i> +375 (44) 555-22-11</div>
+          <div class="contact-detail"><i class="fab fa-instagram"></i> @himchistka.minsk</div>
+          <div class="contact-detail"><i class="fas fa-envelope"></i> clean.minsk@auto.by</div>
+        </div>
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt"></i>
+          <p>г. Минск, ул. Тимирязева, 123</p>
+          <p style="font-size: 0.9rem; margin-top: 12px;">(въезд со двора, навигатор: Автоцентр «Чистюля»)</p>
+        </div>
+      </div>
+      <div class="work-time">
+        <span><i class="fas fa-calendar-check"></i> пн–пт: 9:00 – 21:00</span>
+        <span><i class="fas fa-calendar-check"></i> сб: 10:00 – 20:00</span>
+        <span><i class="fas fa-calendar-check"></i> вс: 11:00 – 18:00</span>
+        <span><i class="fas fa-clock"></i> по записи</span>
+      </div>
+    </div>
+
+    <!-- Вкладка Отзывы -->
+    <div id="reviews" class="tab-pane">
+      <h2 style="margin-bottom: 16px;"><i class="fas fa-pen-fancy" style="color: #0f5b3a;"></i> Отзывы клиентов</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="avatar">Д</div><div><span class="review-name">Дмитрий С.</span><div class="stars">★★★★★</div></div>
+          </div>
+          <div class="review-text">«Удалили застарелое пятно от кофе на сиденье. Пахнет новым авто. Очень доволен!»</div>
+          <div class="review-date">12 февраля 2025</div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="avatar">А</div><div><span class="review-name">Анна В.</span><div class="stars">★★★★★</div></div>
+          </div>
+          <div class="review-text">«Делали комплексную химчистку салона + антибактериальная обработка. Ребята знают своё дело. Цена адекватная.»</div>
+          <div class="review-date">3 февраля 2025</div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="avatar">М</div><div><span class="review-name">Максим Л.</span><div class="stars">★★★★☆</div></div>
+          </div>
+          <div class="review-text">«Приятный сервис, отмыли потолок от следов курения предыдущего владельца. Приеду ещё за полировкой.»</div>
+          <div class="review-date">24 января 2025</div>
+        </div>
+      </div>
+      <div class="rating-summary">
+        <i class="fas fa-medal"></i>
+        <span><strong>4.9</strong> средний рейтинг · <strong>142</strong> отзыва</span>
+        <span style="display: flex; gap: 5px; color: #f5b342;">★★★★★</span>
+        <span style="color: #1c5a3c;">Яндекс / Google Maps</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-soap"></i> Химчистка авто в Минске — вернём свежесть вашему автомобилю
+  </div>
+</div>
+
+<!-- МОДАЛЬНОЕ ОКНО С МИНИ-ГАЛЕРЕЕЙ -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <h3 id="modal-title">Салон BMW</h3>
+    
+    <!-- Основное фото с кнопками навигации -->
+    <div class="main-image-container">
+      <button class="nav-btn prev" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></button>
+      <img id="modal-main-image" src="img/bmw1.jpg" alt="Салон BMW после химчистки">
+      <button class="nav-btn next" onclick="changeImage(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    
+    <!-- Миниатюры для выбора фото -->
+    <div class="thumbnails" id="thumbnails-container">
+      <!-- Сюда будут добавляться миниатюры через JavaScript -->
+    </div>
+    
+    <p id="modal-desc">Профессиональная химчистка салона BMW: удалены все загрязнения, пятна и запахи. Салон как новый!</p>
+    
+    <div style="margin-top: 20px; text-align: left; background: #f5f9ff; padding: 15px; border-radius: 20px;">
+      <p><i class="fas fa-check-circle" style="color: #0f5b3a;"></i> <strong>Выполненные работы:</strong></p>
+      <ul style="list-style: none; padding-left: 5px;">
+        <li>✓ Химчистка сидений</li>
+        <li>✓ Чистка потолка</li>
+        <li>✓ Обработка пластика</li>
+        <li>✓ Удаление запаха</li>
+        <li>✓ Нанесение защиты</li>
+      </ul>
+    </div>
+    
+    <div style="background: #e1f0e8; padding: 12px; border-radius: 40px; display: inline-block; margin-top: 20px; width: 100%;">
+      <i class="fas fa-calendar-check" style="color: #0f5b3a;"></i> Выполнено: 15 февраля 2025
+    </div>
+    
+    <div style="margin-top: 15px; font-size: 0.9rem; color: #4a5f73;">
+      <p>⭐ Оценка клиента: 5/5</p>
+      <p>🕒 Время работы: 4 часа</p>
+      <p>🔧 Мастер: Дмитрий</p>
+      <p>📋 Дополнительно: обработка антибактериальным составом</p>
+      <p>✨ Рекомендация: повторить через 6 месяцев</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panes = {
+      main: document.getElementById('main'),
+      gallery: document.getElementById('gallery'),
+      contacts: document.getElementById('contacts'),
+      reviews: document.getElementById('reviews')
+    };
+
+    const titles = {
+      main: 'химчистка салона автомобиля в минске',
+      gallery: 'химчистка салона автомобиля',
+      contacts: 'химчистка авто минск',
+      reviews: 'химчистка салона автомобиля в минске цены'
+    };
+
+    function activateTab(tabId) {
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      Object.values(panes).forEach(pane => {
+        if (pane) pane.classList.remove('active-pane');
+      });
+
+      const activeBtn = Array.from(tabButtons).find(btn => btn.dataset.tab === tabId);
+      if (activeBtn) activeBtn.classList.add('active');
+      if (panes[tabId]) panes[tabId].classList.add('active-pane');
+
+      if (titles[tabId]) {
+        document.title = titles[tabId];
+      }
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const tabId = e.currentTarget.dataset.tab;
+        if (tabId) activateTab(tabId);
+      });
+    });
+
+    const initialActive = document.querySelector('.tab-btn.active')?.dataset.tab || 'main';
+    if (titles[initialActive]) {
+      document.title = titles[initialActive];
+    }
+  })();
+
+  // Данные для каждого элемента галереи (можно добавлять сколько угодно фото)
+  const galleryData = {
+    bmw: {
+      title: 'Салон BMW',
+      description: 'Профессиональная химчистка салона BMW: удалены все загрязнения, пятна и запахи. Салон как новый!',
+      images: [
+        'img/photo_2026-02-18_18-01-58.jpg',
+        'img/photo_2026-02-18_18-01-46.jpg',
+        'img/bmw3.jpg',
+        'img/bmw4.jpg'
+      ]
+    },
+    leather: {
+      title: 'Кожаные сиденья',
+      description: 'Глубокая чистка кожи с питанием и защитой. Восстановлен первоначальный цвет и эластичность.',
+      images: [
+        'img/leather1.jpg',
+        'img/leather2.jpg',
+        'img/leather3.jpg'
+      ]
+    },
+    fabric: {
+      title: 'Тканевый потолок',
+      description: 'Удалены следы курения и въевшаяся грязь. Потолок полностью высушен, без разводов.',
+      images: [
+        'img/fabric1.jpg',
+        'img/fabric2.jpg',
+        'img/fabric3.jpg'
+      ]
+    },
+    trunk: {
+      title: 'Багажник и ковры',
+      description: 'Полная чистка багажного отделения и ковриков. Удалены застарелые пятна и запах.',
+      images: [
+        'img/trunk1.jpg',
+        'img/trunk2.jpg',
+        'img/trunk3.jpg'
+      ]
+    },
+    ozone: {
+      title: 'Озонирование салона',
+      description: 'Обработка озоном полностью удалила запах табака и бактерии. Воздух свежий и чистый.',
+      images: [
+        'img/ozone1.jpg',
+        'img/ozone2.jpg'
+      ]
+    },
+    headlights: {
+      title: 'Полировка фар',
+      description: 'Восстановлена прозрачность фар, удалена желтизна и царапины. Свет стал ярче на 90%.',
+      images: [
+        'img/headlights1.jpg',
+        'img/headlights2.jpg',
+        'img/headlights3.jpg'
+      ]
+    }
+  };
+
+  let currentItem = null;
+  let currentImageIndex = 0;
+
+  function openModal(item) {
+    currentItem = item;
+    currentImageIndex = 0;
+    
+    const data = galleryData[item];
+    if (!data) return;
+    
+    document.getElementById('modal-title').textContent = data.title;
+    document.getElementById('modal-desc').textContent = data.description;
+    
+    // Обновляем главное фото
+    updateMainImage();
+    
+    // Создаем миниатюры
+    const thumbnailsContainer = document.getElementById('thumbnails-container');
+    thumbnailsContainer.innerHTML = '';
+    
+    data.images.forEach((imgSrc, index) => {
+      const thumb = document.createElement('img');
+      thumb.src = imgSrc;
+      thumb.alt = `${data.title} - фото ${index + 1}`;
+      thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+      thumb.onclick = () => selectImage(index);
+      thumbnailsContainer.appendChild(thumb);
+    });
+    
+    document.getElementById('modal').classList.add('active');
+    document.querySelector('.modal-content').scrollTop = 0;
+  }
+
+  function updateMainImage() {
+    const data = galleryData[currentItem];
+    if (data && data.images.length > 0) {
+      document.getElementById('modal-main-image').src = data.images[currentImageIndex];
+    }
+    
+    // Обновляем активный класс у миниатюр
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumb, index) => {
+      if (index === currentImageIndex) {
+        thumb.classList.add('active');
+      } else {
+        thumb.classList.remove('active');
+      }
+    });
+  }
+
+  function changeImage(direction) {
+    const data = galleryData[currentItem];
+    if (!data) return;
+    
+    currentImageIndex += direction;
+    
+    // Зацикливаем просмотр
+    if (currentImageIndex < 0) {
+      currentImageIndex = data.images.length - 1;
+    } else if (currentImageIndex >= data.images.length) {
+      currentImageIndex = 0;
+    }
+    
+    updateMainImage();
+  }
+
+  function selectImage(index) {
+    currentImageIndex = index;
+    updateMainImage();
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+</script>
+</body>
+</html>
