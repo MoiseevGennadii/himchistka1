@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>химчистка салона автомобиля</title>
+  <!-- Font Awesome 5 (иконки) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <!-- Google Fonts (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    /* Копируем основные стили из index.html */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f6f8fa;
+      color: #1e2b3c;
+      line-height: 1.5;
+    }
+    .app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 24px 40px;
+    }
+    .header {
+      margin-bottom: 32px;
+    }
+    .header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #0a1a2b;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .header h1 i {
+      color: #2b7a4b;
+      font-size: 2rem;
+    }
+    .nav-menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      border-bottom: 2px solid #dde2e8;
+      padding-bottom: 8px;
+      justify-content: center;
+    }
+    .nav-link {
+      background: transparent;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 40px;
+      color: #4a5f73;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .nav-link i {
+      font-size: 1.1rem;
+    }
+    .nav-link:hover {
+      background: #e9eef3;
+      color: #1e3a5f;
+    }
+    .nav-link.active {
+      background: #ffffff;
+      color: #0f5b3a;
+      box-shadow: 0 2px 8px rgba(15, 91, 58, 0.15);
+    }
+    .content-card {
+      background: white;
+      border-radius: 32px;
+      padding: 36px 32px;
+      box-shadow: 0 15px 40px -12px rgba(0,32,64,0.12);
+      margin-top: 24px;
+      min-height: 460px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .gallery-item {
+      background: #f1f7fc;
+      border-radius: 24px;
+      padding: 30px 12px 20px;
+      text-align: center;
+      transition: 0.15s;
+      border: 1px solid #dee9f2;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+    .gallery-item i {
+      font-size: 5rem;
+      color: #2e6b4c;
+      margin-bottom: 12px;
+    }
+    .gallery-item p {
+      font-weight: 600;
+      color: #1d3d4a;
+    }
+    .badge {
+      background: #0f5b3a;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .footer-note {
+      margin-top: 40px;
+      text-align: center;
+      color: #556f84;
+      font-size: 0.9rem;
+      border-top: 1px solid #d7e0e9;
+      padding-top: 20px;
+    }
+    .back-home {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .back-home a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #0f5b3a;
+      color: white;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+    @media (max-width: 550px) {
+      .app { padding: 12px; }
+      .content-card { padding: 20px 16px; }
+      .nav-link { padding: 10px 12px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <h1>
+      <i class="fas fa-spray-can-sparkles"></i> 
+      Химчистка авто в Минске
+    </h1>
+    <nav class="nav-menu">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+      <a href="gallery.html" class="nav-link active"><i class="fas fa-images"></i> Галерея</a>
+      <a href="contacts.html" class="nav-link"><i class="fas fa-map-pin"></i> Контакты</a>
+      <a href="reviews.html" class="nav-link"><i class="fas fa-star"></i> Отзывы</a>
+    </nav>
+  </div>
+
+  <div class="content-card">
+    <h2 style="margin-bottom: 20px; display: flex; gap: 10px;">
+      <i class="fas fa-camera-retro" style="color: #0f5b3a;"></i> 
+      Примеры работ
+    </h2>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="alert('Фото салона BMW')">
+        <i class="fas fa-car-side"></i><p>Салон BMW</p><span class="badge">до/после</span>
+      </div>
+      <div class="gallery-item" onclick="alert('Фото кожаных сидений')">
+        <i class="fas fa-chair"></i><p>Кожаные сиденья</p><span class="badge">чистка</span>
+      </div>
+      <div class="gallery-item" onclick="alert('Фото тканевого потолка')">
+        <i class="fas fa-vest"></i><p>Тканевый потолок</p><span class="badge">без разводов</span>
+      </div>
+      <div class="gallery-item" onclick="alert('Фото багажника')">
+        <i class="fas fa-caravan"></i><p>Ковры и багажник</p><span class="badge">восстановление</span>
+      </div>
+      <div class="gallery-item" onclick="alert('Фото озонирования')">
+        <i class="fas fa-wind"></i><p>Озонирование</p><span class="badge">запах табака</span>
+      </div>
+      <div class="gallery-item" onclick="alert('Фото полировки фар')">
+        <i class="fas fa-brush"></i><p>Полировка фар</p><span class="badge">оптика</span>
+      </div>
+    </div>
+    
+    <div class="back-home">
+      <a href="index.html">
+        <i class="fas fa-arrow-left"></i> Вернуться на главную
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-soap"></i> Химчистка авто в Минске
+  </div>
+</div>
+
+<script>
+  document.title = 'химчистка салона автомобиля';
+</script>
+</body>
+</html>
