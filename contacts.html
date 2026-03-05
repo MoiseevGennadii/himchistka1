@@ -115,6 +115,15 @@
     .info-col h2 i {
       color: #0f5b3a;
     }
+    
+    /* Стили для кликабельных контактов */
+    .contact-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      margin-bottom: 16px;
+    }
+    
     .contact-detail {
       display: flex;
       align-items: center;
@@ -122,19 +131,38 @@
       background: #f2f7fd;
       border-radius: 80px;
       padding: 16px 28px;
-      margin-bottom: 16px;
       font-weight: 500;
       transition: 0.2s;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
-    .contact-detail:hover {
-      transform: translateX(5px);
+    
+    .contact-link:hover .contact-detail {
       background: #e8f0f8;
+      transform: translateX(5px);
     }
+    
     .contact-detail i {
       font-size: 1.6rem;
       color: #0f5b3a;
       width: 36px;
     }
+    
+    .contact-detail div {
+      flex: 1;
+    }
+    
+    .contact-detail strong {
+      font-size: 1.1rem;
+      display: block;
+    }
+    
+    .contact-detail small {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    
+    /* Карта */
     .map-placeholder {
       flex: 2 1 300px;
       background: linear-gradient(145deg, #d0dee8, #e1eef5);
@@ -150,6 +178,14 @@
       align-items: center;
       justify-content: center;
     }
+    .map-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
     .map-placeholder i {
       font-size: 4rem;
       color: #1c4e3a;
@@ -159,6 +195,20 @@
       font-size: 1.2rem;
       margin: 10px 0;
     }
+    .map-button {
+      margin-top: 20px;
+      background: #0f5b3a;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+    .map-button:hover {
+      background: #1a7a4e;
+    }
+    
+    /* Время работы */
     .work-time {
       margin-top: 30px;
       background: #e1f0e8;
@@ -179,7 +229,8 @@
       color: #0f5b3a;
       font-size: 1.2rem;
     }
-    /* кнопка навигации */
+    
+    /* Кнопка назад */
     .back-home {
       margin-top: 30px;
       text-align: center;
@@ -195,12 +246,13 @@
       border-radius: 50px;
       font-weight: 600;
       transition: 0.2s;
+      -webkit-tap-highlight-color: transparent;
     }
     .back-home a:hover {
       background: #1a7a4e;
       transform: translateY(-2px);
     }
-    /* футер */
+    
     .footer-note {
       margin-top: 40px;
       text-align: center;
@@ -227,8 +279,10 @@
         font-size: 0.9rem;
       }
       .contact-detail {
-        padding: 12px 20px;
-        font-size: 0.95rem;
+        padding: 14px 20px;
+      }
+      .contact-detail strong {
+        font-size: 1rem;
       }
       .work-time {
         flex-direction: column;
@@ -264,47 +318,73 @@
     
     <div class="contacts-row">
       <div class="info-col">
-        <div class="contact-detail">
-          <i class="fas fa-phone-alt"></i>
-          <div>
-            <strong>+375 (29) 777-88-99</strong><br>
-            <span style="font-size: 0.9rem; color: #666;">Velcom / A1</span>
+        <!-- Телефон A1 / Velcom - кликабельно -->
+        <a href="tel:+375297778899" class="contact-link">
+          <div class="contact-detail">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <strong>+375 (29) 777-88-99</strong>
+              <small>Velcom / A1</small>
+            </div>
           </div>
-        </div>
+        </a>
         
-        <div class="contact-detail">
-          <i class="fas fa-mobile-alt"></i>
-          <div>
-            <strong>+375 (44) 555-22-11</strong><br>
-            <span style="font-size: 0.9rem; color: #666;">MTS / Life</span>
+        <!-- Телефон MTS / Life - кликабельно -->
+        <a href="tel:+375445552211" class="contact-link">
+          <div class="contact-detail">
+            <i class="fas fa-mobile-alt"></i>
+            <div>
+              <strong>+375 (44) 555-22-11</strong>
+              <small>MTS / Life</small>
+            </div>
           </div>
-        </div>
+        </a>
         
-        <div class="contact-detail">
-          <i class="fab fa-instagram"></i>
-          <div>
-            <strong>@himchistka.minsk</strong><br>
-            <span style="font-size: 0.9rem; color: #666;">Подписывайтесь!</span>
+        <!-- Instagram - кликабельно (открывает приложение или сайт) -->
+        <a href="https://instagram.com/himchistka.minsk" target="_blank" class="contact-link">
+          <div class="contact-detail">
+            <i class="fab fa-instagram"></i>
+            <div>
+              <strong>@himchistka.minsk</strong>
+              <small>Подписывайтесь!</small>
+            </div>
           </div>
-        </div>
+        </a>
         
-        <div class="contact-detail">
-          <i class="fas fa-envelope"></i>
-          <div>
-            <strong>clean.minsk@auto.by</strong><br>
-            <span style="font-size: 0.9rem; color: #666;">Ответим за 1 час</span>
+        <!-- Email - кликабельно -->
+        <a href="mailto:clean.minsk@auto.by?subject=Вопрос%20по%20химчистке" class="contact-link">
+          <div class="contact-detail">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>clean.minsk@auto.by</strong>
+              <small>Ответим за 1 час</small>
+            </div>
           </div>
-        </div>
+        </a>
+        
+        <!-- Telegram/Viber (добавил для удобства) -->
+        <a href="https://t.me/himchistka_minsk" target="_blank" class="contact-link">
+          <div class="contact-detail">
+            <i class="fab fa-telegram"></i>
+            <div>
+              <strong>Telegram / Viber</strong>
+              <small>Быстрая связь</small>
+            </div>
+          </div>
+        </a>
       </div>
       
+      <!-- Карта с кликабельной ссылкой на навигатор -->
       <div class="map-placeholder">
-        <i class="fas fa-map-marked-alt"></i>
-        <p><strong>г. Минск, ул. Тимирязева, 123</strong></p>
-        <p style="font-size: 1rem;">(въезд со двора)</p>
-        <p style="font-size: 1rem; margin-top: 20px;">🚗 Навигатор: Автоцентр «Чистюля»</p>
-        <p style="font-size: 0.9rem; color: #2e6b4c; margin-top: 20px;">
-          <i class="fas fa-car"></i> Бесплатная парковка для клиентов
-        </p>
+        <a href="https://maps.app.goo.gl/?q=Минск+Тимирязева+123" target="_blank" class="map-link">
+          <i class="fas fa-map-marked-alt"></i>
+          <p><strong>г. Минск, ул. Тимирязева, 123</strong></p>
+          <p style="font-size: 1rem;">(въезд со двора)</p>
+          <p style="font-size: 1rem; margin-top: 20px;">🚗 Автоцентр «Чистюля»</p>
+          <div class="map-button">
+            <i class="fas fa-location-arrow"></i> Открыть в навигаторе
+          </div>
+        </a>
       </div>
     </div>
     
@@ -313,6 +393,12 @@
       <span><i class="fas fa-calendar-check"></i> сб: 10:00 – 20:00</span>
       <span><i class="fas fa-calendar-check"></i> вс: 11:00 – 18:00</span>
       <span><i class="fas fa-clock"></i> строго по записи</span>
+    </div>
+    
+    <!-- Дополнительная информация -->
+    <div style="margin-top: 20px; text-align: center; color: #0f5b3a; font-size: 0.95rem;">
+      <i class="fas fa-car"></i> Бесплатная парковка для клиентов · 
+      <i class="fas fa-wifi"></i> Wi-Fi в зоне ожидания
     </div>
     
     <div class="back-home">
@@ -331,13 +417,20 @@
   // Устанавливаем заголовок страницы
   document.title = 'химчистка авто минск';
   
-  // Добавляем обработчики для контактных данных (можно кликнуть по телефону)
-  document.querySelectorAll('.contact-detail').forEach(item => {
-    item.addEventListener('click', function() {
-      const text = this.innerText;
-      if (text.includes('+375')) {
-        // Если это телефон - можно предложить позвонить
-        console.log('Можно сделать звонок');
+  // Добавляем поддержку для Viber (определяем устройство)
+  if (navigator.userAgent.match(/viber/i)) {
+    // Если открыто в Viber - показываем специальную ссылку
+    console.log('Viber detected');
+  }
+  
+  // Функция для отслеживания кликов по контактам (необязательно)
+  document.querySelectorAll('.contact-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('tel:')) {
+        console.log('Звонок по телефону:', href.replace('tel:', ''));
+      } else if (href.startsWith('mailto:')) {
+        console.log('Отправка email');
       }
     });
   });
