@@ -35,9 +35,11 @@
       letter-spacing: -0.02em;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       color: #0a1a2b;
       margin-bottom: 20px;
+      text-align: center;
     }
     .header h1 i {
       color: #2b7a4b;
@@ -49,20 +51,22 @@
       gap: 8px;
       border-bottom: 2px solid #dde2e8;
       padding-bottom: 8px;
+      justify-content: center; /* Кнопки по центру */
     }
     .tab-btn {
       background: transparent;
       border: none;
-      padding: 10px 24px;
+      padding: 10px 20px;
       font-size: 1rem;
       font-weight: 600;
-      border-radius: 40px 40px 0 0;
+      border-radius: 40px;
       color: #4a5f73;
       cursor: pointer;
       transition: 0.2s;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      flex: 0 1 auto; /* Автоматическая ширина */
     }
     .tab-btn i {
       font-size: 1.1rem;
@@ -74,7 +78,7 @@
     .tab-btn.active {
       background: #ffffff;
       color: #0f5b3a;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.02), 0 4px 0 #0f5b3a;
+      box-shadow: 0 2px 8px rgba(15, 91, 58, 0.15);
     }
     /* контейнер контента */
     .content-card {
@@ -486,13 +490,28 @@
       transform: scale(1.1);
     }
     
-    /* адаптация */
+    /* адаптация для мобильных */
     @media (max-width: 550px) {
-      .app { padding: 16px; }
-      .content-card { padding: 24px 18px; }
-      .tab-btn { padding: 10px 16px; }
-      .modal-content { padding: 20px 15px; }
-      .thumbnail { width: 50px; height: 50px; }
+      .app { 
+        padding: 16px; 
+      }
+      .content-card { 
+        padding: 24px 18px; 
+      }
+      .tab-btn { 
+        padding: 8px 16px; 
+        font-size: 0.95rem;
+      }
+      .tab-btn i {
+        font-size: 1rem;
+      }
+      .modal-content { 
+        padding: 20px 15px; 
+      }
+      .thumbnail { 
+        width: 50px; 
+        height: 50px; 
+      }
     }
   </style>
 </head>
@@ -690,15 +709,27 @@
     };
 
     function activateTab(tabId) {
-      tabButtons.forEach(btn => btn.classList.remove('active'));
+      // Деактивируем все кнопки
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Скрываем все панели
       Object.values(panes).forEach(pane => {
         if (pane) pane.classList.remove('active-pane');
       });
 
+      // Активируем нужную кнопку и панель
       const activeBtn = Array.from(tabButtons).find(btn => btn.dataset.tab === tabId);
-      if (activeBtn) activeBtn.classList.add('active');
-      if (panes[tabId]) panes[tabId].classList.add('active-pane');
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+      
+      if (panes[tabId]) {
+        panes[tabId].classList.add('active-pane');
+      }
 
+      // Меняем заголовок
       if (titles[tabId]) {
         document.title = titles[tabId];
       }
@@ -707,17 +738,28 @@
     tabButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
         const tabId = e.currentTarget.dataset.tab;
-        if (tabId) activateTab(tabId);
+        if (tabId) {
+          activateTab(tabId);
+        }
       });
     });
 
+    // Проверяем, что все элементы существуют
+    console.log('Проверка элементов:', {
+      main: !!panes.main,
+      gallery: !!panes.gallery,
+      contacts: !!panes.contacts,
+      reviews: !!panes.reviews
+    });
+
+    // Устанавливаем начальный заголовок
     const initialActive = document.querySelector('.tab-btn.active')?.dataset.tab || 'main';
     if (titles[initialActive]) {
       document.title = titles[initialActive];
     }
   })();
 
-  // Данные для каждого элемента галереи (можно добавлять сколько угодно фото)
+  // Данные для галереи
   const galleryData = {
     bmw: {
       title: 'Салон BMW',
@@ -805,7 +847,8 @@
     });
     
     document.getElementById('modal').classList.add('active');
-    document.querySelector('.modal-content').scrollTop = 0;
+    const modalContent = document.querySelector('.modal-content');
+    if (modalContent) modalContent.scrollTop = 0;
   }
 
   function updateMainImage() {
@@ -858,4 +901,3 @@
   }
 </script>
 </body>
-</html>
